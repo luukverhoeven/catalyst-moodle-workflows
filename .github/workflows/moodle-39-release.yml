@@ -59,8 +59,10 @@ jobs:
       max-parallel: 1
       fail-fast: false
       matrix:
-        include:
-          - {moodle-branch: ${{ inputs.strategy_moodle_branch }}, php: ${{ inputs.strategy_php }}, node: ${{ inputs.strategy_node }}, database: 'pgsql'}
+        database: ['pgsql']
+        moodle-branch: ${{ [inputs.strategy_moodle_branch] }}
+        node: ${{ [inputs.strategy_node] }}
+        php:  ${{ [inputs.strategy_php] }}
 
     steps:
       - name: Run plugin setup
